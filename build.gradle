@@ -25,7 +25,8 @@ group = "hardcorequesting" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "HQM-The Journey"
 
 minecraft {
-    version = "10.13.4.1448-1.7.10"
+    //version = "10.13.4.1448-1.7.10"
+    version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "eclipse/assets"
 
     //replacing stuff in code.
@@ -94,11 +95,11 @@ task copyChicken(type: Copy, dependsOn: "extractUserDev") {
 //tasks.setupDecompWorkspace.dependsOn copyChicken
 
 def libDir = './build/libs'
-
+/*
 task deobfJar(type: Jar) {
     description = 'Creates a jar file containing the non-obfuscated class files'
     classifier = 'deobf'
     destinationDir = file(libDir)
     from sourceSets.main.output.classesDir
-}
-tasks.build.dependsOn deobfJar
+}*/
+//tasks.build.dependsOn deobfJar
