@@ -1,16 +1,25 @@
 package hardcorequesting;
 
+import net.minecraft.client.Minecraft;
 
+import hardcorequesting.client.interfaces.GuiQuestBook;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+import hardcorequesting.network.*;
 import hardcorequesting.quests.QuestTask;
 import hardcorequesting.reputation.Reputation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import cpw.mods.fml.common.gameevent.InputEvent;
+
+import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,6 +109,16 @@ public class EventHandler {
             task.onReputationChange(event);
         }
     }
+
+    @SubscribeEvent
+	@SideOnly(Side.CLIENT)
+    public void onKey(InputEvent evt) {
+        if (Keyboard.isKeyDown(41)) {
+            //GuiQuestBook.displayGui(Minecraft.getMinecraft().thePlayer, false);
+            PacketHandler.sendToServer(PacketHandler.getWriter(PacketId.REQ_OPEN_INTERFACE));
+        }
+    }
+
 
     private List<QuestTask> getTasks(Type type) {
         return registeredTasks[type.ordinal()];

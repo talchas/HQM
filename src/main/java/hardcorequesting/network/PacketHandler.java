@@ -196,6 +196,10 @@ public class PacketHandler {
                     break;
                 case BLOCK_SYNC:
                     handleBlockSync(player, dr);
+                    break;
+            case REQ_OPEN_INTERFACE:
+                QuestingData.getQuestingData(player).sendDataToClientAndOpenInterface(player, null);
+                break;
             }
         } catch (Throwable ex) {
             ex.printStackTrace();

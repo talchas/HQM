@@ -19,7 +19,8 @@ public enum PacketId {
     TEAM_STATS_UPDATE,
     TRACKER_ACTIVATE,
     TRACKER_RESPONSE,
-    BLOCK_SYNC;
+    BLOCK_SYNC,
+    REQ_OPEN_INTERFACE;
 
 
     public byte getId() {
